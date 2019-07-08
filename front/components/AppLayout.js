@@ -1,21 +1,54 @@
-import React from "react";
-import Link from 'next/link'
-import { Menu, Input, Button } from "antd";
+import React from 'react';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import { Col, Input, Menu, Row, Card, Avatar } from 'antd';
+
+const dummy = {
+  nickname: '제로초',
+  Post: [],
+  Followings: [],
+  Followers: [],
+  isLoggedIn: false,
+};
 
 const AppLayout = ({ children }) => {
   return (
     <div>
       <Menu mode="horizontal">
-        <Menu.Item key="home"><Link href="/">노드버드</Link></Menu.Item>
-        <Menu.Item key="profile"><Link href="/Profile">프로필</Link></Menu.Item>
+        <Menu.Item key="home"><Link href="/"><a>노드버드</a></Link></Menu.Item>
+        <Menu.Item key="profile"><Link href="/profile"><a>프로필</a></Link></Menu.Item>
         <Menu.Item key="mail">
-          <Input.Search enterButton style={{ verticalAlign: "middle" }} />
+          <Input.Search enterButton style={{ verticalAlign: 'middle' }} />
         </Menu.Item>
       </Menu>
-      <Link href="/SignUp"><Button>회원가입</Button></Link>
-      {children}
+      <Row gutter={8}>
+        <Col xs={24} md={6}>
+        <Card
+          actions={[
+            <div key="twit">짹짹<br />{dummy.Post.length}</div>,
+            <div key="following">팔로잉<br />{dummy.Followings.length}</div>,
+            <div key="follower">팔로워<br />{dummy.Followers.length}</div>,
+          ]}
+        >
+          <Card.Meta
+            avatar={<Avatar>{dummy.nickname[0]}</Avatar>}
+            title={dummy.nickname}
+          />
+        </Card>
+        </Col>
+        <Col xs={24} md={12}>
+          {children}
+        </Col>
+        <Col xs={24} md={6}>
+          <Link href="https://www.zerocho.com" ><a target="_blank">Made by ZeroCho</a></Link>
+        </Col>
+      </Row>
     </div>
   );
+};
+
+AppLayout.propTypes = {
+  children: PropTypes.node,
 };
 
 export default AppLayout;
