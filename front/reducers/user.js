@@ -31,5 +31,11 @@ const reducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: action.data,
       }
+    default : 
+      return {
+        ...state,
+      }
   }
 };
+
+export default reducer;
