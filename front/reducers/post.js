@@ -1,12 +1,20 @@
 const initialState = {
-  mainPosts: [],
+  mainPosts: [{
+    User: {
+      id: 1,
+      nickname: '제로초',
+    },
+    content: '첫 번째 게시글',
+    img: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
+  }],
+  imagePaths: [],
 }
 
-const ADD_POST = "ADD_POST"; //액숀의 이름
-const ADD_DUMMY = "ADD_DUMMY"; //액숀의 이름
+export const ADD_POST = "ADD_POST"; //액숀의 이름
+export const ADD_DUMMY = "ADD_DUMMY"; //액숀의 이름
 
 const addPost = {
-  type:ADD_POST,
+  type: ADD_POST,
 }
 
 const addDummy = {
@@ -24,10 +32,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         mainPosts: [action.data, ...state.mainPosts],
       }
-    default : 
+    default:
       return {
         ...state,
-    }
+      }
   }
 };
 
