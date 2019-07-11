@@ -1,9 +1,22 @@
-
-import { all, fork, takeLatest, takeEvery, call, put, take, delay } from 'redux-saga/effects';
-import { LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE } from '../reducers/user';
-
-const HELLO_SAGA = "HELLO_SAGA";
-const BUY_SAGA = 'BUY_SAGA';
+import {
+  all,
+  fork,
+  takeLatest,
+  takeEvery,
+  call,
+  put,
+  take,
+  delay,
+} from 'redux-saga/effects';
+import axios from 'axios';
+import {
+  LOG_IN_REQUEST,
+  LOG_IN_SUCCESS,
+  LOG_IN_FAILURE,
+  SIGN_UP_REQUEST,
+  SIGN_UP_FAILURE,
+  SIGN_UP_SUCCESS,
+} from '../reducers/user';
 
 function loginAPI() {
   //서버에 요청
@@ -11,27 +24,46 @@ function loginAPI() {
 
 function* login() {
   try {
-    yield call(loginAPI); //동기호출
-    yield put({ type: LOG_IN_SUCCESS });
+    // yield call(loginAPI);
+    yield delay(2000); //2초 딜레이
+    yield put({
+      // put은 dispatch 동일
+      type: LOG_IN_SUCCESS,
+    });
   } catch (e) {
-    console.log(e);
-    yield put({ type: LOG_IN_FAILURE });
+    // loginAPI 실패
+    console.error(e);
+    yield put({
+      type: LOG_IN_FAILURE,
+    });
   }
 }
 
 function* watchLogin() {
-  //yield takeLatest(LOG_IN, login) //로그인이라는 액션이 들어오기를 기다림.
-  yield take(LOG_IN_REQUEST);
-  yield put({ type: LOG_IN_SUCCESS });
+  yield takeEvery(LOG_IN_REQUEST, login);
 }
 
-function* hello() {
-  yield delay(1000);
-  yield put({ type: 'BYE_SAGA' });
+function* signUp() {
+  try {
+    // yield call(signUpAPI);
+    yield delay(2000);
+    throw new Error('에러에러에러');
+    yield put({
+      // put은 dispatch 동일
+      type: SIGN_UP_SUCCESS,
+    });
+  } catch (e) {
+    // loginAPI 실패
+    console.error(e);
+    yield put({
+      type: SIGN_UP_FAILURE,
+      error: e,
+    });
+  }
 }
 
-function* watchHello() {
-  yield takeEvery(HELLO_SAGA, hello);
+function* watchSignUp() {
+  yield takeEvery(SIGN_UP_REQUEST, signUp);
 }
 
 //여기가 시작점
@@ -40,10 +72,7 @@ function* watchHello() {
 //put은 사가의 디스패치 라고 볼수 있다
 //call은 동기요청 fork는 비동기 요청
 export default function* userSaga() {
-  yield all([
-    fork(watchHello),
-    fork(watchLogin),
-  ]);
+  yield all([fork(watchSignUp), fork(watchLogin)]);
   // console.log('aaaa');
   // yield helloSaga();
 }

@@ -16,7 +16,9 @@ const Profile = () => {
         dataSource={['제로초', '바보', '노드버드오피셜']}
         renderItem={item => (
           <List.Item style={{ marginTop: '20px' }}>
-            <Card actions={[<Icon key="stop" type="stop" />]}><Card.Meta description={item} /></Card>
+            <Card actions={[<Icon key="stop" type="stop" />]}>
+              <Card.Meta description={item} />
+            </Card>
           </List.Item>
         )}
       />
@@ -30,7 +32,9 @@ const Profile = () => {
         dataSource={['제로초', '바보', '노드버드오피셜']}
         renderItem={item => (
           <List.Item style={{ marginTop: '20px' }}>
-            <Card actions={[<Icon key="stop" type="stop" />]}><Card.Meta description={item} /></Card>
+            <Card actions={[<Icon key="stop" type="stop" />]}>
+              <Card.Meta description={item} />
+            </Card>
           </List.Item>
         )}
       />
