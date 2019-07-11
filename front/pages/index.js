@@ -11,7 +11,12 @@ const Home = () => {
   const { isLoggedIn } = useSelector(state => state.user);
   const { mainPosts } = useSelector(state => state.post);
 
-
+  useEffect(() => {
+    dispatch({ type: 'HELLO_SAGA', });
+    dispatch({ type: 'HELLO_SAGA', });
+    dispatch({ type: 'HELLO_SAGA', });
+    dispatch({ type: 'HELLO_SAGA', });
+  }, []);
 
 
   return (
@@ -27,3 +32,4 @@ const Home = () => {
 };
 
 export default Home;
+
