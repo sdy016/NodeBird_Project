@@ -1,0 +1,28 @@
+{
+  "name": "react-nodebird-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "author": "SEO-DONG-YUL",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0", //비동기 통신
+    "bcrypt": "^3.0.6", //암호화
+    "cookie-parser": "^1.4.4",  //쿠키
+    "dotenv": "^8.0.0", //환경변수 설정
+    "express": "^4.17.1",
+    "express-session": "^1.16.2", //세션 관리.
+    "helmet": "^3.18.0", //보안
+    "hpp": "^0.2.2", //보안
+    "morgan": "^1.9.1", //서버에 로그 남겨줌
+    "multer": "^1.4.1", //이미지 업로더
+    "passport": "^0.4.0", //로그인
+    "passport-local": "^1.0.0", //로그인
+    "sequelize": "^5.10.0", //ORM
+    "sequelize-cli": "^5.5.0"//ORM
+  }
+}
+
