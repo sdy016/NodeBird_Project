@@ -1,37 +1,35 @@
-import {
-  all,
-  fork,
-  takeLatest,
-  takeEvery,
-  call,
-  put,
-  take,
-  delay,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import {
+  LOAD_USER_FAILURE,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOG_IN_FAILURE,
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
-  LOG_IN_FAILURE,
-  SIGN_UP_REQUEST,
+  LOG_OUT_FAILURE,
+  LOG_OUT_REQUEST,
+  LOG_OUT_SUCCESS,
   SIGN_UP_FAILURE,
+  SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
 } from '../reducers/user';
 
-function loginAPI() {
-  //서버에 요청
+function logInAPI(loginData) {
+  // 서버에 요청을 보내는 부분
+  return axios.post('/user/login', loginData, {
+    withCredentials: true,
+  });
 }
 
-function* login() {
+function* logIn(action) {
   try {
-    // yield call(loginAPI);
-    yield delay(2000); //2초 딜레이
-    yield put({
-      // put은 dispatch 동일
+    const result = yield call(logInAPI, action.data);
+    yield put({ // put은 dispatch 동일
       type: LOG_IN_SUCCESS,
+      data: result.data,
     });
-  } catch (e) {
-    // loginAPI 실패
+  } catch (e) { // loginAPI 실패
     console.error(e);
     yield put({
       type: LOG_IN_FAILURE,
@@ -39,21 +37,23 @@ function* login() {
   }
 }
 
-function* watchLogin() {
-  yield takeEvery(LOG_IN_REQUEST, login);
+function* watchLogIn() {
+  yield takeEvery(LOG_IN_REQUEST, logIn);
 }
 
-function* signUp() {
+function signUpAPI(signUpData) {
+  // 서버에 요청을 보내는 부분
+  return axios.post('/user/', signUpData);
+}
+
+function* signUp(action) {
   try {
     // yield call(signUpAPI);
-    yield delay(2000);
-    throw new Error('에러에러에러');
-    yield put({
-      // put은 dispatch 동일
+    yield call(signUpAPI, action.data);
+    yield put({ // put은 dispatch 동일
       type: SIGN_UP_SUCCESS,
     });
-  } catch (e) {
-    // loginAPI 실패
+  } catch (e) { // loginAPI 실패
     console.error(e);
     yield put({
       type: SIGN_UP_FAILURE,
@@ -66,13 +66,66 @@ function* watchSignUp() {
   yield takeEvery(SIGN_UP_REQUEST, signUp);
 }
 
-//여기가 시작점
-//yield 는 중단점이다.
-//take는 중단점 실행을 나타내는 트리거 같은 놈인듯
-//put은 사가의 디스패치 라고 볼수 있다
-//call은 동기요청 fork는 비동기 요청
+function logOutAPI() {
+  // 서버에 요청을 보내는 부분
+  return axios.post('/user/logout', {}, {
+    withCredentials: true,
+  });
+}
+
+function* logOut() {
+  try {
+    // yield call(logOutAPI);
+    yield call(logOutAPI);
+    yield put({ // put은 dispatch 동일
+      type: LOG_OUT_SUCCESS,
+    });
+  } catch (e) { // loginAPI 실패
+    console.error(e);
+    yield put({
+      type: LOG_OUT_FAILURE,
+      error: e,
+    });
+  }
+}
+
+function* watchLogOut() {
+  yield takeEvery(LOG_OUT_REQUEST, logOut);
+}
+
+function loadUserAPI() {
+  // 서버에 요청을 보내는 부분
+  return axios.get('/user/', {
+    withCredentials: true,
+  });
+}
+
+function* loadUser() {
+  try {
+    // yield call(loadUserAPI);
+    const result = yield call(loadUserAPI);
+    yield put({ // put은 dispatch 동일
+      type: LOAD_USER_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) { // loginAPI 실패
+    console.error(e);
+    yield put({
+      type: LOAD_USER_FAILURE,
+      error: e,
+    });
+  }
+}
+
+function* watchLoadUser() {
+  yield takeEvery(LOAD_USER_REQUEST, loadUser);
+}
+
 export default function* userSaga() {
-  yield all([fork(watchSignUp), fork(watchLogin)]);
-  // console.log('aaaa');
-  // yield helloSaga();
+  yield all([
+    fork(watchLogIn),
+    fork(watchLogOut),
+    fork(watchLoadUser),
+    fork(watchSignUp),
+  ]);
 }

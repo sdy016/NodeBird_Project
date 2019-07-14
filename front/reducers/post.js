@@ -1,24 +1,21 @@
 export const initialState = {
-  mainPosts: [
-    {
+  mainPosts: [{
+    id: 1,
+    User: {
       id: 1,
-      User: {
-        id: 1,
-        nickname: '제로초',
-      },
-      content: '첫 번째 게시글',
-      img:
-        'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
-      Comments: [],
+      nickname: '제로초',
     },
-  ], // 화면에 보일 포스트들
+    content: '첫 번째 게시글',
+    img: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
+    Comments: [],
+  }], // 화면에 보일 포스트들
   imagePaths: [], // 미리보기 이미지 경로
   addPostErrorReason: '', // 포스트 업로드 실패 사유
   isAddingPost: false, // 포스트 업로드 중
   postAdded: false, // 포스트 업로드 성공
-  isAddingComment: false, //코멘트 업로드 중
-  addCommentErrorReason: '', //코멘트 업로드 실패 사유
-  commentAdded: false, //코멘트 업로드 성공
+  isAddingComment: false,
+  addCommentErrorReason: '',
+  commentAdded: false,
 };
 
 const dummyPost = {
@@ -57,7 +54,7 @@ export const UPLOAD_IMAGES_REQUEST = 'UPLOAD_IMAGES_REQUEST';
 export const UPLOAD_IMAGES_SUCCESS = 'UPLOAD_IMAGES_SUCCESS';
 export const UPLOAD_IMAGES_FAILURE = 'UPLOAD_IMAGES_FAILURE';
 
-export const REMOVE_IMAGE = 'REMOVE_IMAGE'; //이미지 삭제
+export const REMOVE_IMAGE = 'REMOVE_IMAGE';
 
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
@@ -89,7 +86,6 @@ export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    //게시물 작성.
     case ADD_POST_REQUEST: {
       return {
         ...state,
@@ -102,20 +98,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAddingPost: false,
-        mainPosts: [dummyPost, ...state.mainPosts],
+        mainPosts: [action.data, ...state.mainPosts],
         postAdded: true,
       };
     }
     case ADD_POST_FAILURE: {
-      console.log(action.error);
       return {
         ...state,
         isAddingPost: false,
         addPostErrorReason: action.error,
       };
     }
-
-    //코멘트 작성.
     case ADD_COMMENT_REQUEST: {
       return {
         ...state,
@@ -125,9 +118,7 @@ export default (state = initialState, action) => {
       };
     }
     case ADD_COMMENT_SUCCESS: {
-      const postIndex = state.mainPosts.findIndex(
-        v => v.id === action.data.postId
-      );
+      const postIndex = state.mainPosts.findIndex(v => v.id === action.data.postId);
       const post = state.mainPosts[postIndex];
       const Comments = [...post.Comments, dummyComment];
       const mainPosts = [...state.mainPosts];
@@ -144,6 +135,23 @@ export default (state = initialState, action) => {
         ...state,
         isAddingComment: false,
         addCommentErrorReason: action.error,
+      };
+    }
+    case LOAD_MAIN_POSTS_REQUEST: {
+      return {
+        ...state,
+        mainPosts: [],
+      };
+    }
+    case LOAD_MAIN_POSTS_SUCCESS: {
+      return {
+        ...state,
+        mainPosts: action.data,
+      };
+    }
+    case LOAD_MAIN_POSTS_FAILURE: {
+      return {
+        ...state,
       };
     }
     default: {

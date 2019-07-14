@@ -1,41 +1,41 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
-    'User',
+    "User",
     {
       // 테이블명은 users
       nickname: {
         type: DataTypes.STRING(20), // 20글자 이하
-        allowNull: false, // 필수
+        allowNull: false // 필수
       },
       userId: {
         type: DataTypes.STRING(20),
         allowNull: false,
-        unique: true, // 고유한 값
+        unique: true // 고유한 값
       },
       password: {
         type: DataTypes.STRING(100), // 100글자 이하
-        allowNull: false,
-      },
+        allowNull: false
+      }
     },
     {
-      charset: 'utf8',
-      collate: 'utf8_general_ci', // 한글이 저장돼요
+      charset: "utf8",
+      collate: "utf8_general_ci" // 한글이 저장돼요
     }
   );
 
   User.associate = db => {
-    db.User.hasMany(db.Post, { as: 'Posts' }); //1:N
-    db.User.hasMany(db.Comment); //1:N
-    db.User.belongsToMany(db.Post, { through: 'Like', as: 'Liked' }); //이미 (post <-> user) belongsTo 관계가 있기 때문에 as 로 구별 할 수 있는 키를 생성
+    db.User.hasMany(db.Post, { as: "Posts" });
+    db.User.hasMany(db.Comment);
+    db.User.belongsToMany(db.Post, { through: "Like", as: "Liked" });
     db.User.belongsToMany(db.User, {
-      through: 'Follow',
-      as: 'Followers',
-      foreignKey: 'followingId',
+      through: "Follow",
+      as: "Followers",
+      foreignKey: "followingId"
     });
     db.User.belongsToMany(db.User, {
-      through: 'Follow',
-      as: 'Followings',
-      foreignKey: 'followerId',
+      through: "Follow",
+      as: "Followings",
+      foreignKey: "followerId"
     });
   };
 
