@@ -1,11 +1,15 @@
 import { all, fork, takeLatest, put, delay, call } from 'redux-saga/effects';
 import axios from 'axios';
-import { ADD_POST_FAILURE, ADD_POST_REQUEST, ADD_POST_SUCCESS } from '../../../lecture/front/reducers/post';
 import {
   ADD_COMMENT_FAILURE,
   ADD_COMMENT_REQUEST,
-  ADD_COMMENT_SUCCESS, LOAD_MAIN_POSTS_FAILURE, LOAD_MAIN_POSTS_REQUEST,
+  ADD_COMMENT_SUCCESS,
+  LOAD_MAIN_POSTS_FAILURE,
+  LOAD_MAIN_POSTS_REQUEST,
   LOAD_MAIN_POSTS_SUCCESS,
+  ADD_POST_FAILURE,
+  ADD_POST_REQUEST,
+  ADD_POST_SUCCESS,
 } from '../reducers/post';
 
 function addPostAPI(postData) {
@@ -56,9 +60,7 @@ function* watchLoadMainPosts() {
   yield takeLatest(LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
 }
 
-function addCommentAPI() {
-
-}
+function addCommentAPI() {}
 
 function* addComment(action) {
   try {
@@ -82,9 +84,5 @@ function* watchAddComment() {
 }
 
 export default function* postSaga() {
-  yield all([
-    fork(watchLoadMainPosts),
-    fork(watchAddPost),
-    fork(watchAddComment),
-  ]);
+  yield all([fork(watchLoadMainPosts), fork(watchAddPost), fork(watchAddComment)]);
 }
