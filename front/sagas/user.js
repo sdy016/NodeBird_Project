@@ -25,11 +25,13 @@ function logInAPI(loginData) {
 function* logIn(action) {
   try {
     const result = yield call(logInAPI, action.data);
-    yield put({ // put은 dispatch 동일
+    yield put({
+      // put은 dispatch 동일
       type: LOG_IN_SUCCESS,
       data: result.data,
     });
-  } catch (e) { // loginAPI 실패
+  } catch (e) {
+    // loginAPI 실패
     console.error(e);
     yield put({
       type: LOG_IN_FAILURE,
@@ -50,10 +52,12 @@ function* signUp(action) {
   try {
     // yield call(signUpAPI);
     yield call(signUpAPI, action.data);
-    yield put({ // put은 dispatch 동일
+    yield put({
+      // put은 dispatch 동일
       type: SIGN_UP_SUCCESS,
     });
-  } catch (e) { // loginAPI 실패
+  } catch (e) {
+    // loginAPI 실패
     console.error(e);
     yield put({
       type: SIGN_UP_FAILURE,
@@ -68,19 +72,25 @@ function* watchSignUp() {
 
 function logOutAPI() {
   // 서버에 요청을 보내는 부분
-  return axios.post('/user/logout', {}, {
-    withCredentials: true,
-  });
+  return axios.post(
+    '/user/logout',
+    {},
+    {
+      withCredentials: true,
+    },
+  );
 }
 
 function* logOut() {
   try {
     // yield call(logOutAPI);
     yield call(logOutAPI);
-    yield put({ // put은 dispatch 동일
+    yield put({
+      // put은 dispatch 동일
       type: LOG_OUT_SUCCESS,
     });
-  } catch (e) { // loginAPI 실패
+  } catch (e) {
+    // loginAPI 실패
     console.error(e);
     yield put({
       type: LOG_OUT_FAILURE,
@@ -109,7 +119,8 @@ function* loadUser(action) {
       data: result.data,
       me: !action.data,
     });
-  } catch (e) { // loginAPI 실패
+  } catch (e) {
+    // loginAPI 실패
     console.error(e);
     yield put({
       type: LOAD_USER_FAILURE,
@@ -123,10 +134,5 @@ function* watchLoadUser() {
 }
 
 export default function* userSaga() {
-  yield all([
-    fork(watchLogIn),
-    fork(watchLogOut),
-    fork(watchLoadUser),
-    fork(watchSignUp),
-  ]);
+  yield all([fork(watchLogIn), fork(watchLogOut), fork(watchLoadUser), fork(watchSignUp)]);
 }

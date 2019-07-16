@@ -60,9 +60,7 @@ function* watchLoadMainPosts() {
   yield takeLatest(LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
 }
 
-function addCommentAPI() {
-
-}
+function addCommentAPI() {}
 
 function* addComment(action) {
   try {
