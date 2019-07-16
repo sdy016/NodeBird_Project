@@ -10,7 +10,7 @@ import AppLayout from '../components/AppLayout';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
 
-const NodeBird = ({ Component, store }) => {
+const NodeBird = ({ Component, store, pageProps }) => {
   return (
     <Provider store={store}>
       <Head>
@@ -18,7 +18,7 @@ const NodeBird = ({ Component, store }) => {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css" />
       </Head>
       <AppLayout>
-        <Component />
+        <Component {...pageProps} />
       </AppLayout>
     </Provider>
   );
@@ -27,6 +27,20 @@ const NodeBird = ({ Component, store }) => {
 NodeBird.propTypes = {
   Component: PropTypes.elementType.isRequired,
   store: PropTypes.object.isRequired,
+  pageProps : PropTypes.object.isRequired,
+};
+
+// 1. getInitialProps 사용을 위해 추가.
+NodeBird.getInitialProps = async (context) => {
+  // 2. app 에서 next가 context를 내려줌.
+  //console.log('NodeBird.getInitialProps', context);
+  // 3. context 안에 ctx, Component 가 존재.
+  const { ctx, Component } = context;
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  return { pageProps };
 };
 
 const configureStore = (initialState, options) => {

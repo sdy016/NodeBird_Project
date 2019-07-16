@@ -4,7 +4,6 @@ const db = require("../models");
 const router = express.Router();
 
 router.get("/:tag", async (req, res, next) => {
-  console.log("routes", "aaaa");
   try {
     const posts = await db.Post.findAll({
       include: [
