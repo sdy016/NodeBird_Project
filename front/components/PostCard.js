@@ -41,12 +41,12 @@ const PostCard = ({ post }) => {
     <div>
       <Card
         key={+post.createdAt}
-        cover={post.img && <img alt="example" src={post.img} />}
+        cover={post.img && <img alt='example' src={post.img} />}
         actions={[
-          <Icon type="retweet" key="retweet" />,
-          <Icon type="heart" key="heart" />,
-          <Icon type="message" key="message" onClick={onToggleComment} />,
-          <Icon type="ellipsis" key="ellipsis" />,
+          <Icon type='retweet' key='retweet' />,
+          <Icon type='heart' key='heart' />,
+          <Icon type='message' key='message' onClick={onToggleComment} />,
+          <Icon type='ellipsis' key='ellipsis' />,
         ]}
         extra={<Button>팔로우</Button>}
       >
@@ -62,11 +62,11 @@ const PostCard = ({ post }) => {
             <Form.Item>
               <Input.TextArea rows={4} value={commentText} onChange={onChangeCommentText} />
             </Form.Item>
-            <Button type="primary" htmlType="submit" loading={isAddingComment}>삐약</Button>
+            <Button type='primary' htmlType='submit' loading={isAddingComment}>삐약</Button>
           </Form>
           <List
             header={`${post.Comments ? post.Comments.length : 0} 댓글`}
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={post.Comments || []}
             renderItem={item => (
               <li>
