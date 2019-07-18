@@ -5,7 +5,7 @@ import {
   LOAD_MAIN_POSTS_REQUEST, LOAD_MAIN_POSTS_SUCCESS, LOAD_MAIN_POSTS_FAILURE, // Post 불러오기 Action
   ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAILURE, // Post 추가 Action
   LOAD_HASHTAG_POSTS_REQUEST, LOAD_HASHTAG_POSTS_SUCCESS, LOAD_HASHTAG_POSTS_FAILURE, // 해시태그 포스트 Action
-  LOAD_USER_POSTS_REQUEST, LOAD_USER_POSTS_SUCCESS, LOAD_USER_POSTS_FAILURE,  //타 유저 포스트 로드.
+  LOAD_USER_POSTS_REQUEST, LOAD_USER_POSTS_SUCCESS, LOAD_USER_POSTS_FAILURE, LOAD_COMMENTS_REQUEST,  //타 유저 포스트 로드.
 } from '../reducers/post';
 
 // 포스트 추가. axios API
@@ -60,15 +60,18 @@ function* watchLoadMainPosts() {
   yield takeLatest(LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
 }
 
-function addCommentAPI() {}
+function addCommentAPI(data) {
+  return axios.post(`/post/${data.postId}/comment`, {content:data.comment}, {withCredentials:true});
+}
 
 function* addComment(action) {
   try {
-    yield delay(2000);
+    const result = yield call(addCommentAPI, action.data);
     yield put({
       type: ADD_COMMENT_SUCCESS,
       data: {
         postId: action.data.postId,
+        comment:result.data,
       },
     });
   } catch (e) {
@@ -82,6 +85,34 @@ function* addComment(action) {
 function* watchAddComment() {
   yield takeLatest(ADD_COMMENT_REQUEST, addComment);
 }
+
+
+function loadCommentsAPI(postId) {
+  return axios.get(`/post/${postId}/comment`);
+}
+
+function* loadComments(action) {
+  try {
+    const result = yield call(loadCommentsAPI, action.data);
+    yield put({
+      type: ADD_COMMENT_SUCCESS,
+      data: {
+        postId: action.data.postId,
+        comment:result.data,
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: ADD_COMMENT_FAILURE,
+      error: e,
+    });
+  }
+}
+
+function* watchLoadComments() {
+  yield takeLatest(LOAD_COMMENTS_REQUEST, loadComments);
+}
+
 
 
 function loadHashtagPostsAPI(tag) {

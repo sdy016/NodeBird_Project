@@ -104,6 +104,8 @@ function* watchLogOut() {
 }
 
 function loadUserAPI(userId) {
+  console.log('userId: ', userId);
+
   // 서버에 요청을 보내는 부분
   return axios.get(userId ? `/user/${userId}` : '/user/', {
     withCredentials: true,
