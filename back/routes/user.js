@@ -42,7 +42,9 @@ router.post("/", async (req, res, next) => {
 
 //회원정보 조회
 router.get("/:id", async (req, res, next) => {
+  console.log('res: ', res);
   // 남의 정보 가져오는 것 ex) /api/user/123
+
   try {
     const user = await db.User.findOne({
       where: { id: parseInt(req.params.id, 10) },

@@ -1,18 +1,10 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import {
-  LOAD_USER_FAILURE,
-  LOAD_USER_REQUEST,
-  LOAD_USER_SUCCESS,
-  LOG_IN_FAILURE,
-  LOG_IN_REQUEST,
-  LOG_IN_SUCCESS,
-  LOG_OUT_FAILURE,
-  LOG_OUT_REQUEST,
-  LOG_OUT_SUCCESS,
-  SIGN_UP_FAILURE,
-  SIGN_UP_REQUEST,
-  SIGN_UP_SUCCESS,
+  LOAD_USER_REQUEST,LOAD_USER_SUCCESS,LOAD_USER_FAILURE,
+  LOG_IN_REQUEST,LOG_IN_SUCCESS,LOG_IN_FAILURE,
+  LOG_OUT_REQUEST,LOG_OUT_SUCCESS,LOG_OUT_FAILURE,
+  SIGN_UP_REQUEST,SIGN_UP_SUCCESS,SIGN_UP_FAILURE,
 } from '../reducers/user';
 
 function logInAPI(loginData) {
@@ -104,6 +96,8 @@ function* watchLogOut() {
 }
 
 function loadUserAPI(userId) {
+  console.log('userId: ', userId);
+
   // 서버에 요청을 보내는 부분
   return axios.get(userId ? `/user/${userId}` : '/user/', {
     withCredentials: true,
