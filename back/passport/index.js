@@ -6,12 +6,11 @@ module.exports = () => {
   //서버쪽에 사용자를 대표하는 아이디 를 저장. [{id:3, cookie:'abcdefg'}]
   //프론트 쪽에서는 쿠키를 쓴다.
   //req.login 을 실행하면 passport.serializeUser 실행 된다.
-  passport.serializeUser((user, done) => {
-    // 서버쪽에 [{ id: 3, cookie: 'asdfgh' }]
+  passport.serializeUser((user, done) => { // Strategy 성공 시 호출됨
     return done(null, user.id);
   });
   //
-  passport.deserializeUser(async (id, done) => {
+  passport.deserializeUser(async (id, done) => { // 매개변수 user는 serializeUser의 done의 인자 user를 받은 것
     try {
       const user = await db.User.findOne({
         where: { id },

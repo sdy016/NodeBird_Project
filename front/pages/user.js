@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import { Avatar, Card } from "antd";
-import { LOAD_USER_POSTS_REQUEST } from "../reducers/post";
-import { LOAD_USER_REQUEST } from "../reducers/user";
-import PostCard from "../components/PostCard";
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { Avatar, Card } from 'antd';
+import { LOAD_USER_POSTS_REQUEST } from '../reducers/post';
+import { LOAD_USER_REQUEST } from '../reducers/user';
+import PostCard from '../components/PostCard';
 
 const User = ({ id }) => {
   const dispatch = useDispatch();
@@ -14,11 +14,11 @@ const User = ({ id }) => {
   useEffect(() => {
     dispatch({
       type: LOAD_USER_REQUEST,
-      data: id
+      data: id,
     });
     dispatch({
       type: LOAD_USER_POSTS_REQUEST,
-      data: id
+      data: id,
     });
   }, []);
   return (
@@ -57,11 +57,11 @@ const User = ({ id }) => {
 };
 
 User.propTypes = {
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
 };
 
-User.getInitialProps = async context => {
-  //Console.log("user getInitialProps", context.query.id);
+User.getInitialProps = async (context) => {
+  // Console.log("user getInitialProps", context.query.id);
   return { id: parseInt(context.query.id, 10) };
 };
 

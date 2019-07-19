@@ -18,6 +18,15 @@
     "no-underscore-dangle": "off",
     "react/forbid-prop-types": 0,
     "object-curly-newline": 0,
+<<<<<<< HEAD
+    "linebreak-style":0,
+    "react/jsx-filename-extension":0,
+    "react/jsx-wrap-multilines":0,
+    "no-console":0,
+    "import/no-extraneous-dependencies" : 0,
+    "no-alert":0,
+=======
     "linebreak-style": 0
+>>>>>>> 1e784cccb6e60f17c713b2e02bd46f72b160bbc6
   }
 }

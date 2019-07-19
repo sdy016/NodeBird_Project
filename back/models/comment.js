@@ -1,3 +1,4 @@
+//comment table orm.
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
     content: {

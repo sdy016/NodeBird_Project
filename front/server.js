@@ -1,8 +1,13 @@
 const express = require('express');
+
 const next = require('next');
+
 const morgan = require('morgan');
+
 const cookieParser = require('cookie-parser');
+
 const expressSession = require('express-session');
+
 const dotenv = require('dotenv');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -12,6 +17,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 dotenv.config();
 
+// prepare => next 코드임.
 app.prepare().then(() => {
   const server = express();
 
@@ -26,21 +32,23 @@ app.prepare().then(() => {
       secret: process.env.COOKIE_SECRET,
       cookie: {
         httpOnly: true,
-        secure: false
+        secure: false,
       }
     })
   );
 
+  // 라우터 추가. (server side)
   server.get('/hashtag/:tag', (req, res) => {
     return app.render(req, res, '/hashtag', { tag: req.params.tag });
   });
 
+  // 라우터 추가. (server side)
   server.get('/user/:id', (req, res) => {
     return app.render(req, res, '/user', { id: req.params.id });
   });
 
   server.get('*', (req, res) => {
-    //모든 요청에 대한 Get 요청에 req,res 반환.
+    // 모든 요청에 대한 Get 요청에 req,res 반환.
     return handle(req, res);
   });
 

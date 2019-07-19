@@ -1,11 +1,11 @@
 const dotenv = require("dotenv");
-
+//환경변수
 dotenv.config();
 
 module.exports = {
   development: {
     username: "core_sa",
-    password: process.env.DB_TEST_PASSWORD,
+    password: process.env.DB_TEST_PASSWORD, //환경변수 값 리턴
     database: "CommunitySNS",
     host: process.env.DB_TEST_HOST,
     dialect: "mssql",

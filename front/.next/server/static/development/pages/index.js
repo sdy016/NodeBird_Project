@@ -152,6 +152,13 @@ var PostCard = function PostCard(_ref) {
     setCommentFormOpened(function (prev) {
       return !prev;
     });
+
+    if (!commentFormOpened) {
+      dispatch({
+        type: _reducers_post__WEBPACK_IMPORTED_MODULE_6__["LOAD_COMMENTS_REQUEST"],
+        data: post.id
+      });
+    }
   }, []);
   var onSubmitComment = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (e) {
     e.preventDefault();
@@ -163,20 +170,58 @@ var PostCard = function PostCard(_ref) {
     return dispatch({
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_6__["ADD_COMMENT_REQUEST"],
       data: {
-        postId: post.id
+        postId: post.id,
+        content: commentText
       }
     });
-  }, [me && me.id]);
+  }, [me && me.id, commentText]);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     setCommentText('');
   }, [commentAdded === true]);
   var onChangeCommentText = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (e) {
     setCommentText(e.target.value);
-  }, []);
+  }, []); // const onToggleLike = useCallback(() => {
+  //   if (!me) {
+  //     return alert('로그인이 필요합니다!');
+  //   }
+  //   if (liked) { // 좋아요 누른 상태
+  //     dispatch({
+  //       type: UNLIKE_POST_REQUEST,
+  //       data: post.id,
+  //     });
+  //   } else { // 좋아요 안 누른 상태
+  //     dispatch({
+  //       type: LIKE_POST_REQUEST,
+  //       data: post.id,
+  //     });
+  //   }
+  // }, [me && me.id, post && post.id, liked]);
+  // const onRetweet = useCallback(() => {
+  //   if (!me) {
+  //     return alert('로그인이 필요합니다.');
+  //   }
+  //   return dispatch({
+  //     type: RETWEET_REQUEST,
+  //     data: post.id,
+  //   });
+  // }, [me && me.id, post && post.id]);
+  // const onFollow = useCallback(userId => () => {
+  //   dispatch({
+  //     type: FOLLOW_USER_REQUEST,
+  //     data: userId,
+  //   });
+  // }, []);
+  // const onUnfollow = useCallback(userId => () => {
+  //   dispatch({
+  //     type: UNFOLLOW_USER_REQUEST,
+  //     data: userId,
+  //   });
+  // }, []);
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 90
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Card"], {
@@ -186,7 +231,7 @@ var PostCard = function PostCard(_ref) {
       src: post.img,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 93
       },
       __self: this
     }),
@@ -195,7 +240,7 @@ var PostCard = function PostCard(_ref) {
       key: "retweet",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 95
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -203,7 +248,7 @@ var PostCard = function PostCard(_ref) {
       key: "heart",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 96
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -212,7 +257,7 @@ var PostCard = function PostCard(_ref) {
       onClick: onToggleComment,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 97
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -220,48 +265,99 @@ var PostCard = function PostCard(_ref) {
       key: "ellipsis",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 98
       },
       __self: this
     })],
     extra: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 100
       },
       __self: this
     }, "\uD314\uB85C\uC6B0"),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 91
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Card"].Meta, {
-    avatar: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
+    avatar: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: {
+        pathname: '/user',
+        query: {
+          id: post.User.id
+        }
+      },
+      as: "/user/".concat(post.User.id),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 104
       },
       __self: this
-    }, post.User.nickname[0]),
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108
+      },
+      __self: this
+    }, post.User.nickname[0]))),
     title: post.User.nickname,
-    description: post.content,
+    description: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 113
+      },
+      __self: this
+    }, post.content.split(/(#[^\s]+)/g).map(function (v) {
+      if (v.match(/#[^\s]+/)) {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+          href: {
+            pathname: '/hashtag',
+            query: {
+              tag: v.slice(1)
+            }
+          },
+          as: "/hashtag/".concat(v.slice(1)),
+          key: v,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 117
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 122
+          },
+          __self: this
+        }, v));
+      }
+
+      return v;
+    })),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 102
     },
     __self: this
   })), commentFormOpened && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Form"], {
     onSubmit: onSubmitComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 134
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 135
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Input"].TextArea, {
@@ -270,7 +366,7 @@ var PostCard = function PostCard(_ref) {
     onChange: onChangeCommentText,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 136
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -279,7 +375,7 @@ var PostCard = function PostCard(_ref) {
     loading: isAddingComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 138
     },
     __self: this
   }, "\uC090\uC57D")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["List"], {
@@ -290,29 +386,48 @@ var PostCard = function PostCard(_ref) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72
+          lineNumber: 145
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Comment"], {
         author: item.User.nickname,
-        avatar: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
+        avatar: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+          href: {
+            pathname: '/user',
+            query: {
+              id: item.User.id
+            }
+          },
+          as: "/user/".concat(item.User.id),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 149
           },
           __self: this
-        }, item.User.nickname[0]),
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 150
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 150
+          },
+          __self: this
+        }, item.User.nickname[0]))),
         content: item.content,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 146
         },
         __self: this
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 140
     },
     __self: this
   })));
@@ -324,7 +439,7 @@ PostCard.propTypes = {
     content: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
     img: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
     createdAt: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.object
-  })
+  }).isRequired
 };
 /* harmony default export */ __webpack_exports__["default"] = (PostCard);
 
@@ -1495,16 +1610,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var initialState = {
-  mainPosts: [{
-    id: 1,
-    User: {
-      id: 1,
-      nickname: '제로초'
-    },
-    content: '첫 번째 게시글',
-    img: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
-    Comments: []
-  }],
+  mainPosts: [],
   // 화면에 보일 포스트들
   imagePaths: [],
   // 미리보기 이미지 경로
@@ -1517,24 +1623,6 @@ var initialState = {
   isAddingComment: false,
   addCommentErrorReason: '',
   commentAdded: false
-};
-var dummyPost = {
-  id: 2,
-  User: {
-    id: 1,
-    nickname: '제로초'
-  },
-  content: '나는 더미입니다.',
-  Comments: []
-};
-var dummyComment = {
-  id: 1,
-  User: {
-    id: 1,
-    nickname: '제로초'
-  },
-  createdAt: new Date(),
-  content: '더미 댓글입니다.'
 };
 var LOAD_MAIN_POSTS_REQUEST = 'LOAD_MAIN_POSTS_REQUEST';
 var LOAD_MAIN_POSTS_SUCCESS = 'LOAD_MAIN_POSTS_SUCCESS';
@@ -1575,6 +1663,32 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case UPLOAD_IMAGES_REQUEST:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case UPLOAD_IMAGES_SUCCESS:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+          imagePaths: [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.imagePaths), Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(action.data))
+        });
+      }
+
+    case UPLOAD_IMAGES_FAILURE:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case REMOVE_IMAGE:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+          imagePaths: state.imagePaths.filter(function (v, i) {
+            return i !== action.index;
+          })
+        });
+      }
+
     case ADD_POST_REQUEST:
       {
         return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
@@ -1589,7 +1703,8 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
         return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
           isAddingPost: false,
           mainPosts: [action.data].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts)),
-          postAdded: true
+          postAdded: true,
+          imagePaths: []
         });
       }
 
@@ -1616,7 +1731,7 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
           return v.id === action.data.postId;
         });
         var post = state.mainPosts[postIndex];
-        var Comments = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(post.Comments), [dummyComment]);
+        var Comments = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(post.Comments), [action.data.comment]);
 
         var mainPosts = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts);
 
@@ -1638,7 +1753,28 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
         });
       }
 
+    case LOAD_COMMENTS_SUCCESS:
+      {
+        var _postIndex = state.mainPosts.findIndex(function (v) {
+          return v.id === action.data.postId;
+        });
+
+        var _post = state.mainPosts[_postIndex];
+        var _Comments = action.data.comments;
+
+        var _mainPosts = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts);
+
+        _mainPosts[_postIndex] = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, _post, {
+          Comments: _Comments
+        });
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+          mainPosts: _mainPosts
+        });
+      }
+
     case LOAD_MAIN_POSTS_REQUEST:
+    case LOAD_HASHTAG_POSTS_REQUEST:
+    case LOAD_USER_POSTS_REQUEST:
       {
         return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
           mainPosts: []
@@ -1646,6 +1782,8 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
       }
 
     case LOAD_MAIN_POSTS_SUCCESS:
+    case LOAD_HASHTAG_POSTS_SUCCESS:
+    case LOAD_USER_POSTS_SUCCESS:
       {
         return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
           mainPosts: action.data
@@ -1653,6 +1791,88 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
       }
 
     case LOAD_MAIN_POSTS_FAILURE:
+    case LOAD_HASHTAG_POSTS_FAILURE:
+    case LOAD_USER_POSTS_FAILURE:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case LIKE_POST_REQUEST:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case LIKE_POST_SUCCESS:
+      {
+        var _postIndex2 = state.mainPosts.findIndex(function (v) {
+          return v.id === action.data.postId;
+        });
+
+        var _post2 = state.mainPosts[_postIndex2];
+        var Likers = [{
+          id: action.data.userId
+        }].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_post2.Likers));
+
+        var _mainPosts2 = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts);
+
+        _mainPosts2[_postIndex2] = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, _post2, {
+          Likers: Likers
+        });
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+          mainPosts: _mainPosts2
+        });
+      }
+
+    case LIKE_POST_FAILURE:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case UNLIKE_POST_REQUEST:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case UNLIKE_POST_SUCCESS:
+      {
+        var _postIndex3 = state.mainPosts.findIndex(function (v) {
+          return v.id === action.data.postId;
+        });
+
+        var _post3 = state.mainPosts[_postIndex3];
+
+        var _Likers = _post3.Likers.filter(function (v) {
+          return v.id !== action.data.userId;
+        });
+
+        var _mainPosts3 = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts);
+
+        _mainPosts3[_postIndex3] = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, _post3, {
+          Likers: _Likers
+        });
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+          mainPosts: _mainPosts3
+        });
+      }
+
+    case UNLIKE_POST_FAILURE:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case RETWEET_REQUEST:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
+      }
+
+    case RETWEET_SUCCESS:
+      {
+        return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+          mainPosts: [action.data].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts))
+        });
+      }
+
+    case RETWEET_FAILURE:
       {
         return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state);
       }
