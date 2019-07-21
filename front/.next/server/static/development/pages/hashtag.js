@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _reducers_post__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/post */ "./reducers/post.js");
 
-var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\PostCard.js";
+var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\PostCard.js";
 
 
 
@@ -1428,7 +1428,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PostCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PostCard */ "./components/PostCard.js");
 
 
-var _jsxFileName = "C:\\Project\\React_Project\\front\\pages\\hashtag.js";
+var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\pages\\hashtag.js";
 
 
 
@@ -1837,7 +1837,7 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Project\React_Project\front\pages\hashtag.js */"./pages/hashtag.js");
+module.exports = __webpack_require__(/*! C:\Users\coresight2\Documents\Visual Studio Code\react-project\NodeBird_Project\front\pages\hashtag.js */"./pages/hashtag.js");
 
 
 /***/ }),

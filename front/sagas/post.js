@@ -102,7 +102,7 @@ function* loadComments(action) {
         comment:result.data,
       },
     });
-  } catch (e) {console.log();
+  } catch (e) {
     yield put({
       type: ADD_COMMENT_FAILURE,
       error: e,
