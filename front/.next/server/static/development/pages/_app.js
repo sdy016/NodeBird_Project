@@ -2770,10 +2770,7 @@ function watchLoadMainPosts() {
 }
 
 function addCommentAPI(data) {
-<<<<<<< HEAD
   console.log('data: ', data);
-=======
->>>>>>> e2424c9a9c6ad90a6a6c3f182e422943d0b20b67
   return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/post/".concat(data.postId, "/comment"), {
     content: data.comment
   }, {
