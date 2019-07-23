@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _reducers_post__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/post */ "./reducers/post.js");
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\PostCard.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\PostCard.js";
 
 
 
@@ -180,48 +180,11 @@ var PostCard = function PostCard(_ref) {
   }, [commentAdded === true]);
   var onChangeCommentText = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (e) {
     setCommentText(e.target.value);
-  }, []); // const onToggleLike = useCallback(() => {
-  //   if (!me) {
-  //     return alert('로그인이 필요합니다!');
-  //   }
-  //   if (liked) { // 좋아요 누른 상태
-  //     dispatch({
-  //       type: UNLIKE_POST_REQUEST,
-  //       data: post.id,
-  //     });
-  //   } else { // 좋아요 안 누른 상태
-  //     dispatch({
-  //       type: LIKE_POST_REQUEST,
-  //       data: post.id,
-  //     });
-  //   }
-  // }, [me && me.id, post && post.id, liked]);
-  // const onRetweet = useCallback(() => {
-  //   if (!me) {
-  //     return alert('로그인이 필요합니다.');
-  //   }
-  //   return dispatch({
-  //     type: RETWEET_REQUEST,
-  //     data: post.id,
-  //   });
-  // }, [me && me.id, post && post.id]);
-  // const onFollow = useCallback(userId => () => {
-  //   dispatch({
-  //     type: FOLLOW_USER_REQUEST,
-  //     data: userId,
-  //   });
-  // }, []);
-  // const onUnfollow = useCallback(userId => () => {
-  //   dispatch({
-  //     type: UNFOLLOW_USER_REQUEST,
-  //     data: userId,
-  //   });
-  // }, []);
-
+  }, []);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 52
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Card"], {
@@ -231,7 +194,7 @@ var PostCard = function PostCard(_ref) {
       src: post.img,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93
+        lineNumber: 55
       },
       __self: this
     }),
@@ -240,7 +203,7 @@ var PostCard = function PostCard(_ref) {
       key: "retweet",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 95
+        lineNumber: 57
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -248,7 +211,7 @@ var PostCard = function PostCard(_ref) {
       key: "heart",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96
+        lineNumber: 58
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -257,7 +220,7 @@ var PostCard = function PostCard(_ref) {
       onClick: onToggleComment,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 97
+        lineNumber: 59
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -265,20 +228,20 @@ var PostCard = function PostCard(_ref) {
       key: "ellipsis",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 98
+        lineNumber: 60
       },
       __self: this
     })],
     extra: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 100
+        lineNumber: 62
       },
       __self: this
     }, "\uD314\uB85C\uC6B0"),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 53
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Card"].Meta, {
@@ -292,19 +255,19 @@ var PostCard = function PostCard(_ref) {
       as: "/user/".concat(post.User.id),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 104
+        lineNumber: 66
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 108
+        lineNumber: 70
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 108
+        lineNumber: 70
       },
       __self: this
     }, post.User.nickname[0]))),
@@ -312,7 +275,7 @@ var PostCard = function PostCard(_ref) {
     description: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 113
+        lineNumber: 75
       },
       __self: this
     }, post.content.split(/(#[^\s]+)/g).map(function (v) {
@@ -328,13 +291,13 @@ var PostCard = function PostCard(_ref) {
           key: v,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 117
+            lineNumber: 79
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 122
+            lineNumber: 84
           },
           __self: this
         }, v));
@@ -344,20 +307,20 @@ var PostCard = function PostCard(_ref) {
     })),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 64
     },
     __self: this
   })), commentFormOpened && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Form"], {
     onSubmit: onSubmitComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 134
+      lineNumber: 96
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 97
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Input"].TextArea, {
@@ -366,7 +329,7 @@ var PostCard = function PostCard(_ref) {
     onChange: onChangeCommentText,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 98
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -375,7 +338,7 @@ var PostCard = function PostCard(_ref) {
     loading: isAddingComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 138
+      lineNumber: 100
     },
     __self: this
   }, "\uC090\uC57D")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["List"], {
@@ -386,7 +349,7 @@ var PostCard = function PostCard(_ref) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 145
+          lineNumber: 107
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Comment"], {
@@ -401,33 +364,33 @@ var PostCard = function PostCard(_ref) {
           as: "/user/".concat(item.User.id),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 149
+            lineNumber: 111
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 112
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 150
+            lineNumber: 112
           },
           __self: this
         }, item.User.nickname[0]))),
         content: item.content,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 146
+          lineNumber: 108
         },
         __self: this
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 140
+      lineNumber: 102
     },
     __self: this
   })));
@@ -463,7 +426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _reducers_post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/post */ "./reducers/post.js");
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\PostForm.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\PostForm.js";
 
 
 
@@ -484,6 +447,7 @@ var PostForm = function PostForm() {
       isAddingPost = _useSelector.isAddingPost,
       postAdded = _useSelector.postAdded;
 
+  var imageInput = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     setText('');
   }, [postAdded === true]);
@@ -494,15 +458,40 @@ var PostForm = function PostForm() {
       return alert('게시글을 작성하세요.');
     }
 
+    var formData = new FormData();
+    imagePaths.forEach(function (i) {
+      formData.append('image', i);
+      formData.append('content', text);
+    });
     dispatch({
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_4__["ADD_POST_REQUEST"],
-      data: {
-        content: text.trim()
-      }
+      data: formData
     });
-  }, [text]);
+  }, [text, imagePaths]);
   var onChangeText = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (e) {
     setText(e.target.value);
+  }, []);
+  var onChangeImages = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (e) {
+    console.log(e.target.files);
+    var imageFormData = new FormData();
+    [].forEach.call(e.target.files, function (f) {
+      imageFormData.append('image', f);
+    });
+    dispatch({
+      type: _reducers_post__WEBPACK_IMPORTED_MODULE_4__["UPLOAD_IMAGES_REQUEST"],
+      data: imageFormData
+    });
+  }, []);
+  var onClickImageUpload = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function () {
+    imageInput.current.click();
+  }, [imageInput.current]);
+  var onRemoveImage = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (index) {
+    return function () {
+      dispatch({
+        type: _reducers_post__WEBPACK_IMPORTED_MODULE_4__["REMOVE_IMAGE"],
+        index: index
+      });
+    };
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Form"], {
     style: {
@@ -512,7 +501,7 @@ var PostForm = function PostForm() {
     onSubmit: onSubmitForm,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 60
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Input"].TextArea, {
@@ -522,28 +511,31 @@ var PostForm = function PostForm() {
     onChange: onChangeText,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 61
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 62
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     type: "file",
     multiple: true,
     hidden: true,
+    ref: imageInput,
+    onChange: onChangeImages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 63
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    onClick: onClickImageUpload,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 64
     },
     __self: this
   }, "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -555,16 +547,16 @@ var PostForm = function PostForm() {
     loading: isAddingPost,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 65
     },
     __self: this
   }, "\uC9F9\uC9F9")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 67
     },
     __self: this
-  }, imagePaths.map(function (v) {
+  }, imagePaths.map(function (v, i) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       key: v,
       style: {
@@ -572,7 +564,7 @@ var PostForm = function PostForm() {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 69
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -583,19 +575,20 @@ var PostForm = function PostForm() {
       alt: v,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 70
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 71
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      onClick: onRemoveImage(i),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 72
       },
       __self: this
     }, "\uC81C\uAC70")));
@@ -1508,7 +1501,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PostForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/PostForm */ "./components/PostForm.js");
 /* harmony import */ var _components_PostCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/PostCard */ "./components/PostCard.js");
 /* harmony import */ var _reducers_post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/post */ "./reducers/post.js");
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\pages\\index.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\pages\\index.js";
 
 
 
@@ -1535,13 +1528,13 @@ var Home = function Home() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 21
     },
     __self: this
   }, me && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_PostForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 22
     },
     __self: this
   }), mainPosts.map(function (c) {
@@ -1550,7 +1543,7 @@ var Home = function Home() {
       post: c,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 25
       },
       __self: this
     });
@@ -1732,6 +1725,8 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
         });
         var post = state.mainPosts[postIndex];
         var Comments = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(post.Comments), [action.data.comment]);
+        console.log('post.Comments: ', post.Comments);
+        console.log('action.data.comment: ', action.data.comment);
 
         var mainPosts = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts);
 
@@ -1893,7 +1888,7 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\coresight2\Documents\Visual Studio Code\react-project\NodeBird_Project\front\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Project\React_Project\front\pages\index.js */"./pages/index.js");
 
 
 /***/ }),

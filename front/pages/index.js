@@ -9,6 +9,8 @@ const Home = () => {
   const { mainPosts } = useSelector(state => state.post);
   const dispatch = useDispatch();
 
+
+
   useEffect(() => {
     dispatch({
       type: LOAD_MAIN_POSTS_REQUEST,

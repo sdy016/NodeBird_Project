@@ -31,7 +31,6 @@ router.post("/", async (req, res, next) => {
       userId: req.body.userId,
       password: hashedPassword
     });
-    console.log(newUser);
     return res.status(200).json(newUser);
   } catch (e) {
     console.error(e);
@@ -42,7 +41,6 @@ router.post("/", async (req, res, next) => {
 
 //회원정보 조회
 router.get("/:id", async (req, res, next) => {
-  console.log('res: ', res);
   // 남의 정보 가져오는 것 ex) /api/user/123
 
   try {
@@ -121,7 +119,6 @@ router.post("/login", (req, res, next) => {
           ],
           attributes: ["id", "nickname", "userId"]
         });
-        console.log(fullUser);
         return res.json(fullUser);
       } catch (e) {
         next(e);

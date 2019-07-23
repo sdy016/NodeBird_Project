@@ -10,6 +10,8 @@ router.get("/", async (req, res, next) => {
       include: [{
         model: db.User,
         attributes: ['id', 'nickname'],
+      },{
+        model: db.Image,
       }],
       order: [["createdAt", "DESC"]] // DESC는 내림차순, ASC는 오름차순
     });

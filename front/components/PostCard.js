@@ -22,6 +22,8 @@ const PostCard = ({ post }) => {
     }
   }, []);
 
+  
+
   const onSubmitComment = useCallback((e) => {
     e.preventDefault();
     if (!me) {
@@ -45,46 +47,6 @@ const PostCard = ({ post }) => {
     setCommentText(e.target.value);
   }, []);
 
-  // const onToggleLike = useCallback(() => {
-  //   if (!me) {
-  //     return alert('로그인이 필요합니다!');
-  //   }
-  //   if (liked) { // 좋아요 누른 상태
-  //     dispatch({
-  //       type: UNLIKE_POST_REQUEST,
-  //       data: post.id,
-  //     });
-  //   } else { // 좋아요 안 누른 상태
-  //     dispatch({
-  //       type: LIKE_POST_REQUEST,
-  //       data: post.id,
-  //     });
-  //   }
-  // }, [me && me.id, post && post.id, liked]);
-
-  // const onRetweet = useCallback(() => {
-  //   if (!me) {
-  //     return alert('로그인이 필요합니다.');
-  //   }
-  //   return dispatch({
-  //     type: RETWEET_REQUEST,
-  //     data: post.id,
-  //   });
-  // }, [me && me.id, post && post.id]);
-
-  // const onFollow = useCallback(userId => () => {
-  //   dispatch({
-  //     type: FOLLOW_USER_REQUEST,
-  //     data: userId,
-  //   });
-  // }, []);
-
-  // const onUnfollow = useCallback(userId => () => {
-  //   dispatch({
-  //     type: UNFOLLOW_USER_REQUEST,
-  //     data: userId,
-  //   });
-  // }, []);
 
   return (
     <div>
@@ -131,31 +93,31 @@ const PostCard = ({ post }) => {
       </Card>
       {commentFormOpened && (
         <>
-          <Form onSubmit={onSubmitComment}>
-            <Form.Item>
-              <Input.TextArea rows={4} value={commentText} onChange={onChangeCommentText} />
-            </Form.Item>
-            <Button type='primary' htmlType='submit' loading={isAddingComment}>삐약</Button>
-          </Form>
-          <List
-            header={`${post.Comments ? post.Comments.length : 0} 댓글`}
-            itemLayout='horizontal'
-            dataSource={post.Comments || []}
-            renderItem={item => (
-              <li>
-                <Comment
-                  author={item.User.nickname}
-                  avatar={(
-                    <Link href={{ pathname: '/user', query: { id: item.User.id } }} as={`/user/${item.User.id}`}>
-                      <a><Avatar>{item.User.nickname[0]}</Avatar></a>
-                    </Link>
-                  )}
-                  content={item.content}
-                />
-              </li>
-            )}
-          />
-        </>
+        <Form onSubmit={onSubmitComment}>
+          <Form.Item>
+            <Input.TextArea rows={4} value={commentText} onChange={onChangeCommentText} />
+          </Form.Item>
+          <Button type="primary" htmlType="submit" loading={isAddingComment}>삐약</Button>
+        </Form>
+        <List
+          header={`${post.Comments ? post.Comments.length : 0} 댓글`}
+          itemLayout="horizontal"
+          dataSource={post.Comments || []}
+          renderItem={item => (
+            <li>
+              <Comment
+                author={item.User.nickname}
+                avatar={(
+                  <Link href={{ pathname: '/user', query: { id: item.User.id } }} as={`/user/${item.User.id}`}>
+                    <a><Avatar>{item.User.nickname[0]}</Avatar></a>
+                  </Link>
+                )}
+                content={item.content}
+              />
+            </li>
+          )}
+        />
+      </>
       )}
     </div>
   );

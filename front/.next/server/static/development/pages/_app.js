@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoginForm */ "./components/LoginForm.js");
 /* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./UserProfile */ "./components/UserProfile.js");
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\AppLayout.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\AppLayout.js";
 
 
 
@@ -300,7 +300,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_signup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/signup */ "./pages/signup.js");
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\LoginForm.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\LoginForm.js";
 
 
 
@@ -465,7 +465,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\UserProfile.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\UserProfile.js";
 
 
 
@@ -1556,7 +1556,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\pages\\_app.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\pages\\_app.js";
 
 
 
@@ -1704,7 +1704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\pages\\signup.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\pages\\signup.js";
 
 
 
@@ -2190,6 +2190,8 @@ var REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
         });
         var post = state.mainPosts[postIndex];
         var Comments = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(post.Comments), [action.data.comment]);
+        console.log('post.Comments: ', post.Comments);
+        console.log('action.data.comment: ', action.data.comment);
 
         var mainPosts = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(state.mainPosts);
 
@@ -2638,11 +2640,21 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(l
 _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchLoadUserPosts),
     _marked13 =
 /*#__PURE__*/
+_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(uploadImages),
+    _marked14 =
+/*#__PURE__*/
+_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(watchUploadImages),
+    _marked15 =
+/*#__PURE__*/
 _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(postSaga);
 
 
 
- // 포스트 추가. axios API
+
+/**************************************
+포스트 추가 API
+*************************************/
+// 포스트 추가. axios API
 
 function addPostAPI(postData) {
   return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/post', postData, {
@@ -2705,7 +2717,11 @@ function watchAddPost() {
       }
     }
   }, _marked2);
-} // 메인 포스트 로드 axios API
+}
+/**************************************
+메인 포스트 로드 API
+*************************************/
+// 메인 포스트 로드 axios API
 
 
 function loadMainPostsAPI() {
@@ -2768,11 +2784,14 @@ function watchLoadMainPosts() {
     }
   }, _marked4);
 }
+/**************************************
+Commnet 추가 API
+*************************************/
+
 
 function addCommentAPI(data) {
-  console.log('data: ', data);
   return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/post/".concat(data.postId, "/comment"), {
-    content: data.comment
+    content: data.content
   }, {
     withCredentials: true
   });
@@ -2801,19 +2820,20 @@ function addComment(action) {
           });
 
         case 6:
-          _context5.next = 12;
+          _context5.next = 13;
           break;
 
         case 8:
           _context5.prev = 8;
           _context5.t0 = _context5["catch"](0);
-          _context5.next = 12;
+          console.error(_context5.t0);
+          _context5.next = 13;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
             type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["ADD_COMMENT_FAILURE"],
             error: _context5.t0
           });
 
-        case 12:
+        case 13:
         case "end":
           return _context5.stop();
       }
@@ -2836,9 +2856,13 @@ function watchAddComment() {
     }
   }, _marked6);
 }
+/**************************************
+Commnet 정보 API
+*************************************/
+
 
 function loadCommentsAPI(postId) {
-  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/post/".concat(postId, "/comment"));
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/post/".concat(postId, "/comments"));
 }
 
 function loadComments(action) {
@@ -2856,10 +2880,10 @@ function loadComments(action) {
           _result3 = _context7.sent;
           _context7.next = 6;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["ADD_COMMENT_SUCCESS"],
+            type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["LOAD_COMMENTS_SUCCESS"],
             data: {
-              postId: action.data.postId,
-              comment: _result3.data
+              postId: action.data,
+              comments: _result3.data
             }
           });
 
@@ -2870,10 +2894,10 @@ function loadComments(action) {
         case 8:
           _context7.prev = 8;
           _context7.t0 = _context7["catch"](0);
-          console.log();
+          console.error(_context7.t0);
           _context7.next = 13;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
-            type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["ADD_COMMENT_FAILURE"],
+            type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["LOAD_COMMENTS_FAILURE"],
             error: _context7.t0
           });
 
@@ -2900,6 +2924,10 @@ function watchLoadComments() {
     }
   }, _marked8);
 }
+/**************************************
+해시태그 정보 API
+*************************************/
+
 
 function loadHashtagPostsAPI(tag) {
   return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/hashtag/".concat(tag));
@@ -2960,6 +2988,10 @@ function watchLoadHashtagPosts() {
     }
   }, _marked10);
 }
+/**************************************
+유저 포스트 정보 API
+*************************************/
+
 
 function loadUserPostsAPI(id) {
   return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/user/".concat(id, "/posts"));
@@ -3020,21 +3052,88 @@ function watchLoadUserPosts() {
     }
   }, _marked12);
 }
+/**************************************
+이미지 업로드 API
+*************************************/
 
-function postSaga() {
-  return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function postSaga$(_context13) {
+
+function uploadImagesAPI(formData) {
+  return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("/post/images", formData, {
+    withCredentials: true
+  });
+}
+
+function uploadImages(action) {
+  var _result6;
+
+  return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function uploadImages$(_context13) {
     while (1) {
       switch (_context13.prev = _context13.next) {
         case 0:
-          _context13.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLoadMainPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchAddComment), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLoadHashtagPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLoadUserPosts)]);
+          _context13.prev = 0;
+          _context13.next = 3;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["call"])(uploadImagesAPI, action.data);
 
-        case 2:
+        case 3:
+          _result6 = _context13.sent;
+          _context13.next = 6;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
+            type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["UPLOAD_IMAGES_SUCCESS"],
+            data: _result6.data
+          });
+
+        case 6:
+          _context13.next = 13;
+          break;
+
+        case 8:
+          _context13.prev = 8;
+          _context13.t0 = _context13["catch"](0);
+          console.error(_context13.t0);
+          _context13.next = 13;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
+            type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["UPLOAD_IMAGES_FAILURE"],
+            error: _context13.t0
+          });
+
+        case 13:
         case "end":
           return _context13.stop();
       }
     }
-  }, _marked13);
+  }, _marked13, null, [[0, 8]]);
+}
+
+function watchUploadImages() {
+  return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function watchUploadImages$(_context14) {
+    while (1) {
+      switch (_context14.prev = _context14.next) {
+        case 0:
+          _context14.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeLatest"])(_reducers_post__WEBPACK_IMPORTED_MODULE_3__["UPLOAD_IMAGES_REQUEST"], uploadImages);
+
+        case 2:
+        case "end":
+          return _context14.stop();
+      }
+    }
+  }, _marked14);
+}
+
+function postSaga() {
+  return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function postSaga$(_context15) {
+    while (1) {
+      switch (_context15.prev = _context15.next) {
+        case 0:
+          _context15.next = 2;
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLoadMainPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchAddComment), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLoadComments), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLoadHashtagPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchLoadUserPosts), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["fork"])(watchUploadImages)]);
+
+        case 2:
+        case "end":
+          return _context15.stop();
+      }
+    }
+  }, _marked15);
 }
 
 /***/ }),
