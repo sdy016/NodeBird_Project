@@ -19,10 +19,14 @@ const PostForm = () => {
       return alert('게시글을 작성하세요.');
     }
     const formData = new FormData();
+    
     imagePaths.forEach((i) => {
       formData.append('image', i);
       formData.append('content', text);
     });
+
+    console.log('formData: ', formData);
+
     dispatch({
       type: ADD_POST_REQUEST,
       data: formData,

@@ -2657,6 +2657,7 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(p
 // 포스트 추가. axios API
 
 function addPostAPI(postData) {
+  console.log('postData: ', postData);
   return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/post', postData, {
     withCredentials: true
   });

@@ -114,8 +114,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _reducers_post__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/post */ "./reducers/post.js");
+/* harmony import */ var _PostImages__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PostImages */ "./components/PostImages.js");
 
 var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\PostCard.js";
+
 
 
 
@@ -184,17 +186,16 @@ var PostCard = function PostCard(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Card"], {
     key: +post.createdAt,
-    cover: post.img && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-      alt: "example",
-      src: post.img,
+    cover: post.Images[0] && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_PostImages__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      images: post.Images,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 56
       },
       __self: this
     }),
@@ -203,7 +204,7 @@ var PostCard = function PostCard(_ref) {
       key: "retweet",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 58
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -211,7 +212,7 @@ var PostCard = function PostCard(_ref) {
       key: "heart",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 59
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -220,7 +221,7 @@ var PostCard = function PostCard(_ref) {
       onClick: onToggleComment,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 60
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -228,20 +229,20 @@ var PostCard = function PostCard(_ref) {
       key: "ellipsis",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 60
+        lineNumber: 61
       },
       __self: this
     })],
     extra: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 63
       },
       __self: this
     }, "\uD314\uB85C\uC6B0"),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 54
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Card"].Meta, {
@@ -255,19 +256,19 @@ var PostCard = function PostCard(_ref) {
       as: "/user/".concat(post.User.id),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 67
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 71
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 71
       },
       __self: this
     }, post.User.nickname[0]))),
@@ -275,7 +276,7 @@ var PostCard = function PostCard(_ref) {
     description: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 75
+        lineNumber: 76
       },
       __self: this
     }, post.content.split(/(#[^\s]+)/g).map(function (v) {
@@ -291,13 +292,13 @@ var PostCard = function PostCard(_ref) {
           key: v,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 80
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 84
+            lineNumber: 85
           },
           __self: this
         }, v));
@@ -307,20 +308,20 @@ var PostCard = function PostCard(_ref) {
     })),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 65
     },
     __self: this
   })), commentFormOpened && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Form"], {
     onSubmit: onSubmitComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 97
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 98
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Input"].TextArea, {
@@ -329,7 +330,7 @@ var PostCard = function PostCard(_ref) {
     onChange: onChangeCommentText,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 99
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -338,7 +339,7 @@ var PostCard = function PostCard(_ref) {
     loading: isAddingComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 101
     },
     __self: this
   }, "\uC090\uC57D")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["List"], {
@@ -349,7 +350,7 @@ var PostCard = function PostCard(_ref) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 108
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Comment"], {
@@ -364,33 +365,33 @@ var PostCard = function PostCard(_ref) {
           as: "/user/".concat(item.User.id),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 111
+            lineNumber: 112
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 112
+            lineNumber: 113
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 112
+            lineNumber: 113
           },
           __self: this
         }, item.User.nickname[0]))),
         content: item.content,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 108
+          lineNumber: 109
         },
         __self: this
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 103
     },
     __self: this
   })));
@@ -463,6 +464,7 @@ var PostForm = function PostForm() {
       formData.append('image', i);
       formData.append('content', text);
     });
+    console.log('formData: ', formData);
     dispatch({
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_4__["ADD_POST_REQUEST"],
       data: formData
@@ -501,7 +503,7 @@ var PostForm = function PostForm() {
     onSubmit: onSubmitForm,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 64
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Input"].TextArea, {
@@ -511,13 +513,13 @@ var PostForm = function PostForm() {
     onChange: onChangeText,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 65
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 66
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -528,14 +530,14 @@ var PostForm = function PostForm() {
     onChange: onChangeImages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 67
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     onClick: onClickImageUpload,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 68
     },
     __self: this
   }, "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -547,13 +549,13 @@ var PostForm = function PostForm() {
     loading: isAddingPost,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 69
     },
     __self: this
   }, "\uC9F9\uC9F9")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 71
     },
     __self: this
   }, imagePaths.map(function (v, i) {
@@ -564,7 +566,7 @@ var PostForm = function PostForm() {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 73
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -575,20 +577,20 @@ var PostForm = function PostForm() {
       alt: v,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 74
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 75
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       onClick: onRemoveImage(i),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 72
+        lineNumber: 76
       },
       __self: this
     }, "\uC81C\uAC70")));
@@ -596,6 +598,117 @@ var PostForm = function PostForm() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PostForm);
+
+/***/ }),
+
+/***/ "./components/PostImages.js":
+/*!**********************************!*\
+  !*** ./components/PostImages.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\PostImages.js";
+
+
+
+
+var PostImages = function PostImages(_ref) {
+  var images = _ref.images;
+
+  if (images.length === 1) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "http://localhost:3065/".concat(images[0].src),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8
+      },
+      __self: this
+    });
+  }
+
+  if (images.length === 2) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "http://localhost:3065/".concat(images[0].src),
+      width: "50%",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "http://localhost:3065/".concat(images[1].src),
+      width: "50%",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: this
+    }));
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "http://localhost:3065/".concat(images[0].src),
+    width: "50%",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: 'inline-block',
+      width: '50%',
+      textAlign: 'center',
+      verticalAlign: 'middle'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+    type: "plus",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: this
+  }), images.length - 1, "\uAC1C\uC758 \uC0AC\uC9C4 \uB354 \uBCF4\uAE30")));
+};
+
+PostImages.propTypes = {
+  images: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+    src: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
+  })).isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (PostImages);
 
 /***/ }),
 

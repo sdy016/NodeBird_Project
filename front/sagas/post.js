@@ -15,6 +15,8 @@ import {
 *************************************/
 // 포스트 추가. axios API
 function addPostAPI(postData) {
+  console.log('postData: ', postData);
+  
   return axios.post('/post', postData, {
     withCredentials: true,
   });

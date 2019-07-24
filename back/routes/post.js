@@ -29,6 +29,10 @@ const upload = multer({
 포스트 작성
 *************************************/
 router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { // POST /api/post
+  // 파일은 req.files로 가고.
+  // 일반 값은 req.body로 간다.
+  // 그래서 upload.none() 으로 설정 한다. 이건 multer에서 자동으로 해준다.
+
   try {
     const hashtags = req.body.content.match(/#[^\s]+/g);
     const newPost = await db.Post.create({
