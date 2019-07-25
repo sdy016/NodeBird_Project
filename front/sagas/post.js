@@ -5,18 +5,18 @@ import {
   LOAD_MAIN_POSTS_REQUEST, LOAD_MAIN_POSTS_SUCCESS, LOAD_MAIN_POSTS_FAILURE, // Post 불러오기 Action
   ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAILURE, // Post 추가 Action
   LOAD_HASHTAG_POSTS_REQUEST, LOAD_HASHTAG_POSTS_SUCCESS, LOAD_HASHTAG_POSTS_FAILURE, // 해시태그 포스트 Action
-  LOAD_USER_POSTS_REQUEST, LOAD_USER_POSTS_SUCCESS, LOAD_USER_POSTS_FAILURE, //타 유저 포스트 로드 Action.
-  LOAD_COMMENTS_REQUEST, LOAD_COMMENTS_SUCCESS, LOAD_COMMENTS_FAILURE, //포스트 코멘트 리스트 로드 Action.
-  UPLOAD_IMAGES_REQUEST, UPLOAD_IMAGES_SUCCESS, UPLOAD_IMAGES_FAILURE, //업로드 이미지 Action
+  LOAD_USER_POSTS_REQUEST, LOAD_USER_POSTS_SUCCESS, LOAD_USER_POSTS_FAILURE, // 타 유저 포스트 로드 Action.
+  LOAD_COMMENTS_REQUEST, LOAD_COMMENTS_SUCCESS, LOAD_COMMENTS_FAILURE, // 포스트 코멘트 리스트 로드 Action.
+  UPLOAD_IMAGES_REQUEST, UPLOAD_IMAGES_SUCCESS, UPLOAD_IMAGES_FAILURE, // 업로드 이미지 Action
 } from '../reducers/post';
 
-/**************************************
-포스트 추가 API
-*************************************/
+// **************************************
+// 포스트 추가 API
+// *************************************
 // 포스트 추가. axios API
 function addPostAPI(postData) {
   console.log('postData: ', postData);
-  
+
   return axios.post('/post', postData, {
     withCredentials: true,
   });
@@ -137,10 +137,13 @@ function* watchLoadComments() {
 해시태그 정보 API
 *************************************/
 function loadHashtagPostsAPI(tag) {
+  console.log('tag: ', tag);
+
   return axios.get(`/hashtag/${tag}`);
 }
 
 function* loadHashtagPosts(action) {
+  console.log('loadHashtagPosts', action);
   try {
     const result = yield call(loadHashtagPostsAPI, action.data);
     yield put({
@@ -156,6 +159,8 @@ function* loadHashtagPosts(action) {
 }
 
 function* watchLoadHashtagPosts() {
+
+  console.log('watchLoadHashtagPosts');
   yield takeLatest(LOAD_HASHTAG_POSTS_REQUEST, loadHashtagPosts);
 }
 

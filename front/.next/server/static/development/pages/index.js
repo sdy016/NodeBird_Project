@@ -464,7 +464,6 @@ var PostForm = function PostForm() {
       formData.append('image', i);
     });
     formData.append('content', text);
-    console.log('formData: ', formData);
     dispatch({
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_4__["ADD_POST_REQUEST"],
       data: formData
@@ -503,7 +502,7 @@ var PostForm = function PostForm() {
     onSubmit: onSubmitForm,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 63
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Input"].TextArea, {
@@ -513,13 +512,13 @@ var PostForm = function PostForm() {
     onChange: onChangeText,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 64
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 65
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -530,14 +529,14 @@ var PostForm = function PostForm() {
     onChange: onChangeImages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 66
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
     onClick: onClickImageUpload,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 67
     },
     __self: this
   }, "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -549,13 +548,13 @@ var PostForm = function PostForm() {
     loading: isAddingPost,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 68
     },
     __self: this
   }, "\uC9F9\uC9F9")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 70
     },
     __self: this
   }, imagePaths.map(function (v, i) {
@@ -566,7 +565,7 @@ var PostForm = function PostForm() {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 78
+        lineNumber: 72
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -577,20 +576,20 @@ var PostForm = function PostForm() {
       alt: v,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 79
+        lineNumber: 73
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
+        lineNumber: 74
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
       onClick: onRemoveImage(i),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 81
+        lineNumber: 75
       },
       __self: this
     }, "\uC81C\uAC70")));

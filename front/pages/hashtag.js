@@ -32,7 +32,7 @@ Hashtag.propTypes = {
 
 // NodeBird.getInitialProps 를 통하여 next의 context를 받아 그중 ctx 정보를 전달 받는다.
 Hashtag.getInitialProps = async (context) => {
-  //console.log('hashtag getInitialProps', context.query.tag);
+  console.log('hashtag getInitialProps', context.query.tag);
   return { tag: context.query.tag };
 };
 

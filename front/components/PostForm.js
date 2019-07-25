@@ -22,21 +22,15 @@ const PostForm = () => {
 
     imagePaths.forEach((i) => {
       formData.append('image', i);
-
     });
-    formData.append('content', text);
 
-    console.log('formData: ', formData);
+    formData.append('content', text);
 
     dispatch({
       type: ADD_POST_REQUEST,
       data: formData,
     });
   }, [text, imagePaths]);
-
-
-
-
 
   const onChangeText = useCallback((e) => {
     setText(e.target.value);

@@ -2650,10 +2650,9 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(p
 
 
 
-
-/**************************************
-포스트 추가 API
-*************************************/
+ // **************************************
+// 포스트 추가 API
+// *************************************
 // 포스트 추가. axios API
 
 function addPostAPI(postData) {
@@ -2931,6 +2930,7 @@ function watchLoadComments() {
 
 
 function loadHashtagPostsAPI(tag) {
+  console.log('tag: ', tag);
   return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/hashtag/".concat(tag));
 }
 
@@ -2941,37 +2941,38 @@ function loadHashtagPosts(action) {
     while (1) {
       switch (_context9.prev = _context9.next) {
         case 0:
-          _context9.prev = 0;
-          _context9.next = 3;
+          console.log('loadHashtagPosts', action);
+          _context9.prev = 1;
+          _context9.next = 4;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["call"])(loadHashtagPostsAPI, action.data);
 
-        case 3:
+        case 4:
           _result4 = _context9.sent;
-          _context9.next = 6;
+          _context9.next = 7;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
             type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["LOAD_HASHTAG_POSTS_SUCCESS"],
             data: _result4.data
           });
 
-        case 6:
-          _context9.next = 12;
+        case 7:
+          _context9.next = 13;
           break;
 
-        case 8:
-          _context9.prev = 8;
-          _context9.t0 = _context9["catch"](0);
-          _context9.next = 12;
+        case 9:
+          _context9.prev = 9;
+          _context9.t0 = _context9["catch"](1);
+          _context9.next = 13;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])({
             type: _reducers_post__WEBPACK_IMPORTED_MODULE_3__["LOAD_HASHTAG_POSTS_FAILURE"],
             error: _context9.t0
           });
 
-        case 12:
+        case 13:
         case "end":
           return _context9.stop();
       }
     }
-  }, _marked9, null, [[0, 8]]);
+  }, _marked9, null, [[1, 9]]);
 }
 
 function watchLoadHashtagPosts() {
@@ -2979,10 +2980,11 @@ function watchLoadHashtagPosts() {
     while (1) {
       switch (_context10.prev = _context10.next) {
         case 0:
-          _context10.next = 2;
+          console.log('watchLoadHashtagPosts');
+          _context10.next = 3;
           return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeLatest"])(_reducers_post__WEBPACK_IMPORTED_MODULE_3__["LOAD_HASHTAG_POSTS_REQUEST"], loadHashtagPosts);
 
-        case 2:
+        case 3:
         case "end":
           return _context10.stop();
       }
