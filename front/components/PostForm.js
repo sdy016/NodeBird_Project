@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { Form, Input, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { ADD_POST_REQUEST,UPLOAD_IMAGES_REQUEST,REMOVE_IMAGE } from '../reducers/post';
+import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../reducers/post';
 
 const PostForm = () => {
   const dispatch = useDispatch();
@@ -19,11 +19,12 @@ const PostForm = () => {
       return alert('게시글을 작성하세요.');
     }
     const formData = new FormData();
-    
+
     imagePaths.forEach((i) => {
       formData.append('image', i);
-      formData.append('content', text);
+
     });
+    formData.append('content', text);
 
     console.log('formData: ', formData);
 
@@ -31,7 +32,11 @@ const PostForm = () => {
       type: ADD_POST_REQUEST,
       data: formData,
     });
-  }, [text,imagePaths]);
+  }, [text, imagePaths]);
+
+
+
+
 
   const onChangeText = useCallback((e) => {
     setText(e.target.value);
