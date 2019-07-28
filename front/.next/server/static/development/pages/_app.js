@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoginForm */ "./components/LoginForm.js");
 /* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./UserProfile */ "./components/UserProfile.js");
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\AppLayout.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\AppLayout.js";
 
 
 
@@ -300,7 +300,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_signup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/signup */ "./pages/signup.js");
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\LoginForm.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\LoginForm.js";
 
 
 
@@ -465,7 +465,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\components\\UserProfile.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\components\\UserProfile.js";
 
 
 
@@ -1556,7 +1556,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\pages\\_app.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\pages\\_app.js";
 
 
 
@@ -1599,16 +1599,35 @@ var NodeBird = function NodeBird(_ref) {
       lineNumber: 18
     },
     __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_AppLayout__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("link", {
+    rel: "stylesheet",
+    type: "text/css",
+    charSet: "UTF-8",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("link", {
+    rel: "stylesheet",
+    type: "text/css",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20
     },
     __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_AppLayout__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 23
     },
     __self: this
   }))));
@@ -1704,7 +1723,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 
-var _jsxFileName = "C:\\Users\\coresight2\\Documents\\Visual Studio Code\\react-project\\NodeBird_Project\\front\\pages\\signup.js";
+var _jsxFileName = "C:\\Project\\React_Project\\front\\pages\\signup.js";
 
 
 
