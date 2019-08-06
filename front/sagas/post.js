@@ -42,9 +42,9 @@ function* watchAddPost() {
   yield takeLatest(ADD_POST_REQUEST, addPost);
 }
 
-/**************************************
-메인 포스트 로드 API
-*************************************/
+/*
+*메인 포스트 로드 API
+*/
 // 메인 포스트 로드 axios API
 function loadMainPostsAPI() {
   return axios.get('/posts');
@@ -197,7 +197,7 @@ function* watchLoadUserPosts() {
 이미지 업로드 API
 *************************************/
 function uploadImagesAPI(formData) {
-  return axios.post(`/post/images`, formData, { withCredentials:true });
+  return axios.post(`/post/images`, formData, { withCredentials: true });
 }
 
 function* uploadImages(action) {

@@ -10,7 +10,6 @@ const Home = () => {
   const dispatch = useDispatch();
 
 
-
   useEffect(() => {
     dispatch({
       type: LOAD_MAIN_POSTS_REQUEST,
