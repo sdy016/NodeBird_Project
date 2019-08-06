@@ -113,11 +113,11 @@ export default (state = initialState, action) => {
       };
     }
     case ADD_COMMENT_SUCCESS: {
-      
+
       const postIndex = state.mainPosts.findIndex(v => v.id === action.data.postId);
       const post = state.mainPosts[postIndex];
       const Comments = [...post.Comments, action.data.comment];
-      
+
       console.log('post.Comments: ', post.Comments);
       console.log('action.data.comment: ', action.data.comment);
 
@@ -179,7 +179,7 @@ export default (state = initialState, action) => {
     case LIKE_POST_SUCCESS: {
       const postIndex = state.mainPosts.findIndex(v => v.id === action.data.postId);
       const post = state.mainPosts[postIndex];
-      const Likers = [{ id: action.data.userId }, ...post.Likers];
+      const Likers = [{ id: action.data.userId }, ...post.Likers]; //좋아요 누른 사람 리스트에 나를 추가.
       const mainPosts = [...state.mainPosts];
       mainPosts[postIndex] = { ...post, Likers };
       return {

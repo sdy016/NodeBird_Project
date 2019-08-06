@@ -17,7 +17,7 @@ const upload = multer({
     },
     filename(req, file, done) {
       //파일명 겹칠수 있으니 날짜 포함 + 확장자로 하게끔 파일명 변환.
-      const ext = path.extname(file.originalname); 
+      const ext = path.extname(file.originalname);
       const basename = path.basename(file.originalname, ext); // 제로초.png, ext===.png, basename===제로초
       done(null, basename + new Date().valueOf() + ext);
     },
@@ -45,16 +45,16 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { // POST 
       })));
       await newPost.addHashtags(result.map(r => r[0]));
     }
-    if (req.body.image) { 
+    if (req.body.image) {
       // 이미지 주소를 여러개 올리면 image: [주소1, 주소2]
       if (Array.isArray(req.body.image)) {
         const images = await Promise.all(req.body.image.map((image) => {
           return db.Image.create({ src: image });
         }));
         await newPost.addImages(images);
-      } 
+      }
       // 이미지를 하나만 올리면 image: 주소1
-      else { 
+      else {
         const image = await db.Image.create({ src: req.body.image });
         await newPost.addImage(image);
       }
@@ -151,9 +151,14 @@ router.post('/:id/comment', isLoggedIn, async (req, res, next) => { // POST /api
   }
 });
 
+/**************************************
+좋아요
+*************************************/
 router.post('/:id/like', isLoggedIn, async (req, res, next) => {
   try {
+    //게시글이 있는지.
     const post = await db.Post.findOne({ where: { id: req.params.id }});
+    //
     if (!post) {
       return res.status(404).send('포스트가 존재하지 않습니다.');
     }
@@ -165,6 +170,9 @@ router.post('/:id/like', isLoggedIn, async (req, res, next) => {
   }
 });
 
+/**************************************
+좋아요 취소
+*************************************/
 router.delete('/:id/like', isLoggedIn, async (req, res, next) => {
   try {
     const post = await db.Post.findOne({ where: { id: req.params.id }});
