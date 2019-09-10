@@ -1,5 +1,5 @@
 const express = require('express');
-const multer = require('multer'); //multer (파일업로더 라이브러리) 사용.
+const multer = require('multer');
 const path = require('path');
 
 const db = require('../models');
@@ -7,16 +7,12 @@ const { isLoggedIn } = require('./middleware');
 
 const router = express.Router();
 
-/**************************************
-multer 미들웨어 사용.
-*************************************/
 const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, done) {
       done(null, 'uploads');
     },
     filename(req, file, done) {
-      //파일명 겹칠수 있으니 날짜 포함 + 확장자로 하게끔 파일명 변환.
       const ext = path.extname(file.originalname);
       const basename = path.basename(file.originalname, ext); // 제로초.png, ext===.png, basename===제로초
       done(null, basename + new Date().valueOf() + ext);
@@ -25,14 +21,7 @@ const upload = multer({
   limits: { fileSize: 20 * 1024 * 1024 },
 });
 
-/**************************************
-포스트 작성
-*************************************/
 router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { // POST /api/post
-  // 파일은 req.files로 가고.
-  // 일반 값은 req.body로 간다.
-  // 그래서 upload.none() 으로 설정 한다. 이건 multer에서 자동으로 해준다.
-
   try {
     const hashtags = req.body.content.match(/#[^\s]+/g);
     const newPost = await db.Post.create({
@@ -43,18 +32,16 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { // POST 
       const result = await Promise.all(hashtags.map(tag => db.Hashtag.findOrCreate({
         where: { name: tag.slice(1).toLowerCase() },
       })));
+      console.log(result);
       await newPost.addHashtags(result.map(r => r[0]));
     }
-    if (req.body.image) {
-      // 이미지 주소를 여러개 올리면 image: [주소1, 주소2]
+    if (req.body.image) { // 이미지 주소를 여러개 올리면 image: [주소1, 주소2]
       if (Array.isArray(req.body.image)) {
         const images = await Promise.all(req.body.image.map((image) => {
           return db.Image.create({ src: image });
         }));
         await newPost.addImages(images);
-      }
-      // 이미지를 하나만 올리면 image: 주소1
-      else {
+      } else { // 이미지를 하나만 올리면 image: 주소1
         const image = await db.Image.create({ src: req.body.image });
         await newPost.addImage(image);
       }
@@ -82,19 +69,11 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next) => { // POST 
   }
 });
 
-/**************************************
-이미지 업로드
-*************************************/
 router.post('/images', upload.array('image'), (req, res) => {
-  console.log('req: ', req.files);
-
+  console.log(req.files);
   res.json(req.files.map(v => v.filename));
 });
 
-
-/**************************************
-코멘트 리스트 가져오기
-*************************************/
 router.get('/:id/comments', async (req, res, next) => {
   try {
     const post = await db.Post.findOne({ where: { id: req.params.id } });
@@ -118,12 +97,7 @@ router.get('/:id/comments', async (req, res, next) => {
   }
 });
 
-
-/**************************************
-코멘트 작성
-*************************************/
 router.post('/:id/comment', isLoggedIn, async (req, res, next) => { // POST /api/post/1000000/comment
-  console.log('req: ', req);
   try {
     const post = await db.Post.findOne({ where: { id: req.params.id } });
     if (!post) {
@@ -151,14 +125,9 @@ router.post('/:id/comment', isLoggedIn, async (req, res, next) => { // POST /api
   }
 });
 
-/**************************************
-좋아요
-*************************************/
 router.post('/:id/like', isLoggedIn, async (req, res, next) => {
   try {
-    //게시글이 있는지.
     const post = await db.Post.findOne({ where: { id: req.params.id }});
-    //
     if (!post) {
       return res.status(404).send('포스트가 존재하지 않습니다.');
     }
@@ -170,9 +139,6 @@ router.post('/:id/like', isLoggedIn, async (req, res, next) => {
   }
 });
 
-/**************************************
-좋아요 취소
-*************************************/
 router.delete('/:id/like', isLoggedIn, async (req, res, next) => {
   try {
     const post = await db.Post.findOne({ where: { id: req.params.id }});

@@ -10,6 +10,7 @@ import {
   UPLOAD_IMAGES_REQUEST, UPLOAD_IMAGES_SUCCESS, UPLOAD_IMAGES_FAILURE, // 업로드 이미지 Action
   LIKE_POST_SUCCESS, LIKE_POST_FAILURE, LIKE_POST_REQUEST, // 좋아요 Action
   UNLIKE_POST_SUCCESS, UNLIKE_POST_FAILURE, UNLIKE_POST_REQUEST, // 안좋아요 Action
+  RETWEET_REQUEST, RETWEET_SUCCESS, RETWEET_FAILURE,
 } from '../reducers/post';
 
 // **************************************
@@ -283,6 +284,35 @@ function* watchUnlikePost() {
   yield takeLatest(UNLIKE_POST_REQUEST, unLikePost);
 }
 
+/**************************************
+리트윗 API
+*************************************/
+function retweetPostAPI(postId) {
+  return axios.post(`/post/${postId}/retweet`, {}, { withCredentials: true });
+}
+
+function* retweetPost(action) {
+  try {
+    const result = yield call(retweetPostAPI, action.data);
+    yield put({
+      type: RETWEET_SUCCESS,
+      data: result.data,
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: RETWEET_FAILURE,
+      error: e,
+    });
+    alert(e.response.data);
+  }
+}
+
+
+function* watchRetweet() {
+  yield takeLatest(RETWEET_REQUEST, retweetPost);
+}
+
 export default function* postSaga() {
   yield all([
     fork(watchLoadMainPosts),
@@ -294,5 +324,6 @@ export default function* postSaga() {
     fork(watchUploadImages),
     fork(watchLikePost),
     fork(watchUnlikePost),
+    fork(watchRetweet),
   ]);
 }
